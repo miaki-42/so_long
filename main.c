@@ -1,15 +1,19 @@
 #include "minilibx-linux/mlx.h"
+#include <stdlib.h>
 
-void    my_func()
+int my_func(void *param)
 {
-    exit(0)
+    (void)param;
+
+    exit(0);
+    return 0;
 }
 
 int main(void)
 {
     void    *mlx = mlx_init();
     void    *win = mlx_new_window(mlx, 1000, 500, "komatsuk");
-    mlx_hook(win, 17, 0, my_func())
+    mlx_hook(win, 17, 0, my_func, "hello");
     mlx_loop(mlx);
 
     return (0);
