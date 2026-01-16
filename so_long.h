@@ -6,18 +6,18 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 03:17:12 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 04:03:46 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <fcntl.h>
+# include <fcntl.h>
 
-#include "libft/include/libft.h"
-#include "minilibx-linux/mlx.h"
-#include "minilibx-linux/mlx_int.h"
+# include "libft/include/libft.h"
+# include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
 
 typedef struct s_map
 {
@@ -25,8 +25,8 @@ typedef struct s_map
     size_t	h;
     size_t	w;
     size_t	collectible_cnt;
-    size_t	start_cnt;
-    size_t	exit_cnt;
+	size_t	exit_cnt;
+	size_t	start_cnt;
     size_t	start_x;
     size_t	start_y;
 }t_map;
@@ -59,8 +59,11 @@ bool	parse_map(t_game *game, char *filename);
 // read_mapfile
 t_list	*read_mapfile(char *filename);
 
-// validate map
-bool	validate_map(t_game *game); 
+// validate_map
+bool	validate_map(t_game *game);
+
+// has_path
+bool	has_path(t_game *game);
 
 // free
 void	free_grid(char **grid, size_t n);

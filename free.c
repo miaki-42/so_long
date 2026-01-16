@@ -6,9 +6,11 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 03:12:49 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 03:12:57 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 04:05:42 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 void	free_grid(char **grid, size_t n)
 {
