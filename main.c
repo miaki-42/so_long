@@ -1,20 +1,30 @@
-#include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/16 16:23:22 by komatsuk          #+#    #+#             */
+/*   Updated: 2026/01/17 02:20:15 by komatsuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int my_func(void *param)
+#include "so_long.h"
+
+int	main(int argc, char *argv[])
 {
-    (void)param;
+	t_game	game;
 
-    exit(0);
-    return 0;
-}
+	// Validate arg
+	if (!validate_arg(argc, argv))
+		return (1);
 
-int main(void)
-{
-    void    *mlx = mlx_init();
-    void    *win = mlx_new_window(mlx, 1000, 500, "komatsuk");
-    mlx_hook(win, 17, 0, my_func, "hello");
-    mlx_loop(mlx);
+	// Parse map
+	if (!parse_map(&game, argv[1]))
+		return (1);
+	
+	// 
 
-    return (0);
+	return (0);
 }

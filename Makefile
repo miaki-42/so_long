@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = main.c
+SRCS = main.c parse.c readmap.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft/libft.a
