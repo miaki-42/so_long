@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:24:45 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 03:06:43 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 03:13:18 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,6 @@ bool	mapsize(t_game *game, t_list *maplst)
 	return (true);
 }
 
-void	free_grid(char **grid, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-		free(grid[i++]);
-	free(grid);
-}
-
 bool	create_map(t_game *game, t_list *maplst)
 {
 	char	**grid;
@@ -96,7 +86,7 @@ bool	parse_map(t_game *game, char *filename)
 	if (!create_map(game, maplst))
 		return (puterr(), false);
 	ft_lstclear(&maplst, free);
-	
-
+	if (!validate_map(game))
+		return (puterr(), false);
 	return (true);
 }
