@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:33:11 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/18 17:22:11 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:28:15 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ static void	set_mlx_null(t_game *game)
 	game->mlx.exit_close.imgptr = NULL;
 	game->mlx.player.imgptr = NULL;
 }
+
+// サイズによる分岐
+static bool	init_image(t_game *game)
+{
+	game->mlx.empty.imgptr = mlx_xpm_file_to_image(game->mlx.mlxptr, "", game->mlx.empty.w, game->mlx.empty.h);
+	if (!game->mlx.empty.imgptr)
+
+}
+
+// allfree
 
 bool	init_mlx(t_game *game)
 {
