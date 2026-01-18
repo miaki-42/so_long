@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:27:39 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 08:32:53 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	render_map(t_game *game);
 void	free_game(t_game *game);
 
 // utils
-void	puterr();
+void	puterr(void);
 int		my_strcmp(const char *s1, const char *s2);
 
 #endif

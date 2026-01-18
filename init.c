@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:33:11 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:27:23 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 08:31:27 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ bool	init_mlx(t_game *game)
 	render_map(game);
 	return (true);
 }
-

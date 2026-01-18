@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:24:45 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:25:35 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 08:31:42 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static t_list	*create_maplst(int fd)
 
 static t_list	*read_mapfile(char *filename)
 {
-	t_list  *maplst;
-	int	 fd;
+	t_list	*maplst;
+	int		fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)

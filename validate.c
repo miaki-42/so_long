@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.game->map.grid[i][j]                                     :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 03:15:34 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 03:59:44 by komatsuk         ###   ########.fr       */
+/*   Created: 2026/01/19 08:33:34 by komatsuk          #+#    #+#             */
+/*   Updated: 2026/01/19 08:33:59 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ static bool	validate_map_format(t_game *game)
 		}
 		y++;
 	}
-	if (game->map.collectible_cnt == 0 || game->map.exit_cnt != 1 || game->map.start_cnt != 1)
+	if (game->map.collectible_cnt == 0
+		|| game->map.exit_cnt != 1 || game->map.start_cnt != 1)
 		return (false);
 	return (true);
 }
