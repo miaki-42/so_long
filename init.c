@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:33:11 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 17:18:34 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:22:11 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static void	set_mlx_null(t_game *game)
 	game->mlx.empty.imgptr = NULL;
 	game->mlx.wall.imgptr = NULL;
 	game->mlx.collectible.imgptr = NULL;
-	game->mlx.mapexit.imgptr = NULL;
-	game->mlx.playericon.imgptr = NULL;
+	game->mlx.exit_open.imgptr = NULL;
+	game->mlx.exit_close.imgptr = NULL;
+	game->mlx.player.imgptr = NULL;
 }
 
 bool	init_mlx(t_game *game)
@@ -47,3 +48,4 @@ bool	init_mlx(t_game *game)
 		return (free_grid(game->map.grid, game->map.h), false);
 	
 }
+
