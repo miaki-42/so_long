@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static bool	is_edge(t_game *game, size_t i, size_t j)
+static bool	is_edge(t_game *game, int i, int j)
 {
 	if (i == 0 || i == game->map.h - 1)
 		return (true);
@@ -21,7 +21,7 @@ static bool	is_edge(t_game *game, size_t i, size_t j)
 	return (false);
 }
 
-static bool	set_map_stats(t_game *game, size_t i, size_t j)
+static bool	set_map_stats(t_game *game, int i, int j)
 {
 	if (game->map.grid[i][j] == '0' || game->map.grid[i][j] == '1')
 		return (true);
@@ -40,6 +40,8 @@ static bool	set_map_stats(t_game *game, size_t i, size_t j)
 		game->map.start_cnt++;
 		game->map.start_x = i;
 		game->map.start_y = j;
+		game->player.x = i;
+		game->player.y = j;
 		return (true);
 	}
 	return (false);
@@ -47,8 +49,8 @@ static bool	set_map_stats(t_game *game, size_t i, size_t j)
 
 static bool	validate_map_format(t_game *game)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->map.h)
@@ -71,11 +73,6 @@ static bool	validate_map_format(t_game *game)
 
 bool	validate_map(t_game *game)
 {
-	// あとで移す
-	game->map.collectible_cnt = 0;
-	game->map.exit_cnt = 0;
-	game->map.start_cnt = 0;
-
 	if (!validate_map_format(game))
 		return (free_grid(game->map.grid, game->map.h), false);
 	if (!has_path(game))

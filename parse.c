@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:24:45 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 03:13:18 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 16:57:40 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ bool	validate_arg(int argc, char *argv[])
 	return (true);
 }
 
-bool	mapsize(t_game *game, t_list *maplst)
+static bool	mapsize(t_game *game, t_list *maplst)
 {
-	size_t	h;
-	size_t	w;
+	int		h;
+	int		w;
 	t_list	*tmp;
 
 	h = ft_lstsize(maplst);
 	if (h == 0)
 		return (false);
-	w = ft_strlen(maplst->content);
+	w = (int)ft_strlen(maplst->content);
 	tmp = maplst;
 	while (tmp)
 	{
-		if (ft_strlen(tmp->content) != w)
+		if ((int)ft_strlen(tmp->content) != w)
 			return (ft_lstclear(&maplst, free), false);
 		tmp = tmp->next;
 	}
@@ -48,11 +48,11 @@ bool	mapsize(t_game *game, t_list *maplst)
 	return (true);
 }
 
-bool	create_map(t_game *game, t_list *maplst)
+static bool	create_map(t_game *game, t_list *maplst)
 {
 	char	**grid;
 	t_list	*tmp;
-	size_t	i;
+	int		i;
 
 	grid = malloc(sizeof(char *) * game->map.h);
 	if (!grid)
@@ -73,6 +73,8 @@ bool	create_map(t_game *game, t_list *maplst)
 	game->map.grid = grid;
 	return (true);
 }
+
+static void	init_mapcnt
 
 bool	parse_map(t_game *game, char *filename)
 {

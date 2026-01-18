@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:23:22 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 02:20:15 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 16:40:40 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ int	main(int argc, char *argv[])
 	if (!validate_arg(argc, argv))
 		return (1);
 
-	// Parse map
+	// Init map-player && Parse map
+	init_gamedata(&game);
 	if (!parse_map(&game, argv[1]))
 		return (1);
 	
-	// 
+	// Initialize mlx
+	if (!init_mlx(&game))
+		return (1);
+	
 
 	return (0);
 }
