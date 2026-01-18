@@ -12,36 +12,49 @@
 
 #include "so_long.h"
 
-static bool	is_edge(t_game *game, int i, int j)
+bool	check_arg(int argc, char *argv[])
 {
-	if (i == 0 || i == game->map.h - 1)
+	char	*last_dot;
+
+	if (argc != 2)
+		return (puterr(), false);
+	last_dot = ft_strrchr(argv[1], '.');
+	if (!last_dot)
+		return (puterr(), false);
+	if (my_strcmp(last_dot, ".ber"))
+		return (puterr(), false);
+	return (true);
+}
+
+static bool	is_edge(t_game *game, int y, int x)
+{
+	if (y == 0 || y == game->map.h - 1)
 		return (true);
-	if (j == 0 || j == game->map.w - 1)
+	if (x == 0 || x == game->map.w - 1)
 		return (true);
 	return (false);
 }
 
-static bool	set_map_stats(t_game *game, int i, int j)
+static bool	set_map_stats(t_game *game, int y, int x)
 {
-	if (game->map.grid[i][j] == '0' || game->map.grid[i][j] == '1')
+	if (game->map.grid[y][x] == '0' || game->map.grid[y][x] == '1')
 		return (true);
-	if (game->map.grid[i][j] == 'C')
+	if (game->map.grid[y][x] == 'C')
 	{
 		game->map.collectible_cnt++;
 		return (true);
 	}
-	if (game->map.grid[i][j] == 'E')
+	if (game->map.grid[y][x] == 'E')
 	{
 		game->map.exit_cnt++;
 		return (true);
 	}
-	if (game->map.grid[i][j] == 'P')
+	if (game->map.grid[y][x] == 'P')
 	{
+		game->map.grid[y][x] = '0';
 		game->map.start_cnt++;
-		game->map.start_x = i;
-		game->map.start_y = j;
-		game->player.x = i;
-		game->player.y = j;
+		game->player.y = y;
+		game->player.x = x;
 		return (true);
 	}
 	return (false);
@@ -49,22 +62,22 @@ static bool	set_map_stats(t_game *game, int i, int j)
 
 static bool	validate_map_format(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	while (i < game->map.h)
+	y = 0;
+	while (y < game->map.h)
 	{
-		j = 0;
-		while (j < game->map.w)
+		x = 0;
+		while (x < game->map.w)
 		{
-			if (is_edge(game, i, j) && game->map.grid[i][j] != '1')
+			if (is_edge(game, y, x) && game->map.grid[y][x] != '1')
 				return (false);
-			if (!set_map_stats(game, i, j))
+			if (!set_map_stats(game, y, x))
 				return (false);
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	if (game->map.collectible_cnt == 0 || game->map.exit_cnt != 1 || game->map.start_cnt != 1)
 		return (false);
@@ -74,8 +87,8 @@ static bool	validate_map_format(t_game *game)
 bool	validate_map(t_game *game)
 {
 	if (!validate_map_format(game))
-		return (free_grid(game->map.grid, game->map.h), false);
+		return (free_game(game), false);
 	if (!has_path(game))
-		return (free_grid(game->map.grid, game->map.h), false);
+		return (free_game(game), false);
 	return (true);
 }

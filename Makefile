@@ -1,8 +1,8 @@
 NAME = so_long
 
 SRCS = main.c \
-	   parse.c read_mapfile.c validate_map.c has_path.c \
-	   init.c free.c utils.c \
+	   parse.c validate.c has_path.c \
+	   init.c render.c hook.c free.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft/libft.a

@@ -6,30 +6,53 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:24:45 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/17 16:57:40 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 08:25:35 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	validate_arg(int argc, char *argv[])
+static t_list	*create_maplst(int fd)
 {
-	char	*last_dot;
+	t_list	*maplst;
+	t_list	*node;
+	char	*line;
+	char	*nlp;
 
-	if (argc != 2)
-		return (puterr(), false);
-	last_dot = ft_strrchr(argv[1], '.');
-	if (!last_dot)
-		return (puterr(), false);
-	if (my_strcmp(last_dot, ".ber"))
-		return (puterr(), false);
-	return (true);
+	maplst = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		nlp = ft_strchr(line, '\n');
+		if (nlp)
+			*nlp = '\0';
+		node = ft_lstnew(line);
+		if (!node)
+			return (ft_lstclear(&maplst, free), NULL);
+		ft_lstadd_back(&maplst, node);
+		line = get_next_line(fd);
+	}
+	return (maplst);
+}
+
+static t_list	*read_mapfile(char *filename)
+{
+	t_list  *maplst;
+	int	 fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	maplst = create_maplst(fd);
+	if (!maplst)
+		return (close(fd), NULL);
+	return (close(fd), maplst);
 }
 
 static bool	mapsize(t_game *game, t_list *maplst)
 {
-	int		h;
 	int		w;
+	int		h;
 	t_list	*tmp;
 
 	h = ft_lstsize(maplst);
@@ -43,8 +66,8 @@ static bool	mapsize(t_game *game, t_list *maplst)
 			return (ft_lstclear(&maplst, free), false);
 		tmp = tmp->next;
 	}
-	game->map.h = h;
 	game->map.w = w;
+	game->map.h = h;
 	return (true);
 }
 
@@ -52,29 +75,28 @@ static bool	create_map(t_game *game, t_list *maplst)
 {
 	char	**grid;
 	t_list	*tmp;
-	int		i;
+	int		y;
 
-	grid = malloc(sizeof(char *) * game->map.h);
+	grid = malloc(sizeof(char *) * (game->map.h + 1));
 	if (!grid)
 		return (ft_lstclear(&maplst, free), false);
+	grid[game->map.h] = NULL;
 	tmp = maplst;
-	i = 0;
+	y = 0;
 	while (tmp)
 	{
-		grid[i] = ft_strdup(tmp->content);
-		if (!grid[i])
+		grid[y] = ft_strdup(tmp->content);
+		if (!grid[y])
 		{
-			free_grid(grid, i);
+			free_game(game);
 			return (ft_lstclear(&maplst, free), false);
 		}
 		tmp = tmp->next;
-		i++;
+		y++;
 	}
 	game->map.grid = grid;
 	return (true);
 }
-
-static void	init_mapcnt
 
 bool	parse_map(t_game *game, char *filename)
 {
