@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:33:11 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:31:27 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 08:47:02 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ bool	init_mlx(t_game *game)
 	if (!game->mlx.winptr)
 		return (free_game(game), false);
 	render_map(game);
+	mlx_hook(game->mlx.winptr, 17, 0, close_game, game);
+	mlx_key_hook(game->mlx.winptr, handle_keypress, game);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:32:53 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 09:24:27 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define SO_LONG_H
 
 # define TILE_SIZE 64
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 
 # include <fcntl.h>
 
@@ -77,6 +82,10 @@ bool	init_mlx(t_game *game);
 
 // render
 void	render_map(t_game *game);
+
+// hook
+int		close_game(t_game *game);
+int		handle_keypress(int keycode, t_game *game);
 
 // free
 void	free_game(t_game *game);
