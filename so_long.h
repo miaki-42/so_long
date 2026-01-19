@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 09:34:25 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:44:55 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		close_game(t_game *game);
 int		handle_keypress(int keycode, t_game *game);
 
 // free
+void	free_grid(char **grid);
 void	free_game(t_game *game);
 
 // utils

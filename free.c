@@ -6,13 +6,13 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 03:12:49 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 09:57:15 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:44:43 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	free_grid(char **grid)
+void	free_grid(char **grid)
 {
 	int	i;
 
