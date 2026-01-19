@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 05:43:46 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 09:26:41 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 09:49:35 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	move_player(t_game *game, int dx, int dy)
 	new_x = game->player.x + dx;
 	new_y = game->player.y + dy;
 	if (game->map.grid[new_y][new_x] == '1')
-		return;
+		return ;
 	game->player.x = new_x;
 	game->player.y = new_y;
 	game->player.move_cnt++;

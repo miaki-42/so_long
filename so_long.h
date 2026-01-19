@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 09:24:27 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 09:34:25 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_mlx
 	t_img	exit_open;
 	t_img	exit_close;
 	t_img	player;
+	t_img	player_exit_close;
 }   t_mlx;
 
 typedef struct s_game

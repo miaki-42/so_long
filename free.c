@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 03:12:49 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:31:16 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 09:57:15 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	free_game(t_game *game)
 {
 	if (game->map.grid)
 		free_grid(game->map.grid);
-	//if (game->mlx.mlxptr)
-	//	;
 	if (game->mlx.winptr)
 		mlx_destroy_window(game->mlx.mlxptr, game->mlx.winptr);
 	if (game->mlx.empty.imgptr)
@@ -42,4 +40,11 @@ void	free_game(t_game *game)
 		mlx_destroy_image(game->mlx.mlxptr, game->mlx.exit_close.imgptr);
 	if (game->mlx.player.imgptr)
 		mlx_destroy_image(game->mlx.mlxptr, game->mlx.player.imgptr);
+	if (game->mlx.player_exit_close.imgptr)
+		mlx_destroy_image(game->mlx.mlxptr, game->mlx.player_exit_close.imgptr);
+	if (game->mlx.mlxptr)
+	{
+		mlx_destroy_display(game->mlx.mlxptr);
+		free(game->mlx.mlxptr);
+	}
 }

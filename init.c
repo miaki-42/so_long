@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:33:11 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:47:02 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 09:35:08 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	set_game_null(t_game *game)
 	game->mlx.exit_open.imgptr = NULL;
 	game->mlx.exit_close.imgptr = NULL;
 	game->mlx.player.imgptr = NULL;
+	game->mlx.player_exit_close.imgptr = NULL;
 }
 
 static bool	load_xpm(t_game *game, char *filepath, t_img *texture)
@@ -48,7 +49,9 @@ static bool	init_image(t_game *game)
 		|| !load_xpm(game, "textures/collectible.xpm", &game->mlx.collectible)
 		|| !load_xpm(game, "textures/exit_open.xpm", &game->mlx.exit_open)
 		|| !load_xpm(game, "textures/exit_close.xpm", &game->mlx.exit_close)
-		|| !load_xpm(game, "textures/player.xpm", &game->mlx.player))
+		|| !load_xpm(game, "textures/player.xpm", &game->mlx.player)
+		|| !load_xpm(game, "textures/player_exit_close.xpm",
+			&game->mlx.player_exit_close))
 		return (false);
 	return (true);
 }
