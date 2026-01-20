@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:44:55 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:19:07 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_H
 
 # define TILE_SIZE 64
+# define MAX_MAP_W 60
+# define MAX_MAP_H 32
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -77,23 +79,16 @@ bool	parse_map(t_game *game, char *filename);
 bool	validate_map(t_game *game);
 bool	has_path(t_game *game);
 
-// init
+// init && mlx
 void	set_game_null(t_game *game);
 bool	init_mlx(t_game *game);
-
-// render
 void	render_map(t_game *game);
-
-// hook
 int		close_game(t_game *game);
 int		handle_keypress(int keycode, t_game *game);
 
-// free
+// free & puterr
 void	free_grid(char **grid);
 void	free_game(t_game *game);
-
-// utils
 void	puterr(void);
-int		my_strcmp(const char *s1, const char *s2);
 
 #endif

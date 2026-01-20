@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 04:02:55 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:02:04 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:13:31 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static char	**mapcpy(t_game *game)
 	}
 	return (cpy);
 }
-
 
 static void	rec(char **cpy, int y, int x)
 {

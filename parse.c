@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:24:45 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/19 08:31:42 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:11:17 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static bool	mapsize(t_game *game, t_list *maplst)
 			return (ft_lstclear(&maplst, free), false);
 		tmp = tmp->next;
 	}
+	if (w > MAX_MAP_W || h > MAX_MAP_H)
+		return (ft_lstclear(&maplst, free), false);
 	game->map.w = w;
 	game->map.h = h;
 	return (true);
