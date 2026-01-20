@@ -6,7 +6,7 @@
 /*   By: komatsuk <komatsuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:59:25 by komatsuk          #+#    #+#             */
-/*   Updated: 2026/01/20 16:19:07 by komatsuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:23:53 by komatsuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 
 typedef struct s_map
 {
-    char	**grid;
-    int		w;
-    int		h;
-    int		collectible_cnt;
+	char	**grid;
+	int		w;
+	int		h;
+	int		collectible_cnt;
 	int		exit_cnt;
 	int		start_cnt;
-}t_map;
+}	t_map;
 
 typedef struct s_player
 {
@@ -43,9 +43,8 @@ typedef struct s_player
 	int	y;
 	int	move_cnt;
 	int	collectible_cnt;
-}t_player;
+}	t_player;
 
-//名前？
 typedef struct s_img
 {
 	void	*imgptr;
@@ -64,14 +63,14 @@ typedef struct s_mlx
 	t_img	exit_close;
 	t_img	player;
 	t_img	player_exit_close;
-}   t_mlx;
+}	t_mlx;
 
 typedef struct s_game
 {
 	t_map		map;
 	t_player	player;
 	t_mlx		mlx;
-}t_game;
+}	t_game;
 
 // parse & validate & has_path
 bool	check_arg(int argc, char *argv[]);
